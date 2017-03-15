@@ -9,6 +9,7 @@ namespace DSSPG4_WEB.Models.Entities
     [Table("Users")]
     public class User : IdentityUser
     {
+
         [MaxLength(255)]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }

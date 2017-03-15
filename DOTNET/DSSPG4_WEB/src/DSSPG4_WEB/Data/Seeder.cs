@@ -40,6 +40,30 @@ namespace DSSPG4_WEB.Data
                     UserName = "admin_2@gmail.com",
                     PasswordHash = "!QAZ1qaz",
                     Email = "admin_2@gmail.com"
+                },
+                new User
+                {
+                    FirstName = "test",
+                    LastName = "na",
+                    UserName = "test@gmail.com",
+                    PasswordHash = "!QAZ1qaz",
+                    Email = "test@gmail.com"
+                },
+                new User
+                {
+                    FirstName = "test2",
+                    LastName = "na",
+                    UserName = "test2@gmail.com",
+                    PasswordHash = "!QAZ1qaz",
+                    Email = "test2@gmail.com"
+                },
+                new User
+                {
+                    FirstName = "test3",
+                    LastName = "na",
+                    UserName = "test3@gmail.com",
+                    PasswordHash = "!QAZ1qaz",
+                    Email = "test3@gmail.com"
                 }
             };
 

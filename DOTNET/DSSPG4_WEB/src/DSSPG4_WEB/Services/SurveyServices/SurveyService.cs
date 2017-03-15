@@ -102,6 +102,12 @@ namespace DSSPG4_WEB.Services.SurveyServices
             return _context.SurveyQuestions.Where(s => s.SurveyId == id);
         }
 
+        public int GetSurveyQuestionsCount(int id)
+        {
+            List<SurveyQuestion> q = _context.SurveyQuestions.Where(s => s.SurveyId == id).ToList();
+            return q.Count;
+        }
+
         public IEnumerable<Response> GetSurveyResponsesBySurveyId(int id)
         {
             return _context.Responses.Where(r => r.ParentQuestion.ParentSurvey.Id == id);

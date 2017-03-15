@@ -10,6 +10,7 @@ using DSSPG4_WEB.Services.UserServices;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using DSSPG4_WEB.Models.Enums;
+using DSSPG4_WEB.Services.Misc;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -211,18 +212,22 @@ namespace DSSPG4_WEB.Controllers
        
         public IActionResult SurveyResults(int id)
         {
-            List<SurveyResultsByUserViewModel> model = new List<SurveyResultsByUserViewModel>();
+            IList<SurveyResultsByUserViewModel> model = new List<SurveyResultsByUserViewModel>();
+
             var allTakers = _surveyService.GetSurveyTakersIds(id);
             var this_Survey = _surveyService.GetSurveyById(id);
+            int totalQuestions = _surveyService.GetSurveyQuestionsCount(id);
+            KmeansMain obj = new KmeansMain(4, totalQuestions);
 
             foreach (var takerId in allTakers)
             {
                 var this_User = _userService.GetById(takerId);
-                bool userAlreadyInList = model.Any(m => m.User.Id == this_User.Id);
+                bool userAlreadyInList = obj.dataSet.Any(m => m.User.Id == this_User.Id);
 
                 if (userAlreadyInList == false)
                 {
                     SurveyResultsByUserViewModel thisUserModel = new SurveyResultsByUserViewModel();
+
                     var usrResponses = _surveyService.GetSurveyResponsesBySurveyIdAndUserID(id, takerId);
                     thisUserModel.User = this_User;
                     thisUserModel.Survey = this_Survey;
@@ -235,14 +240,16 @@ namespace DSSPG4_WEB.Controllers
                         rspData.ResponseValue = res.QuestionResponse;
                         rspDataList.Add(rspData);
                     }
-
                     thisUserModel.Responses = rspDataList;
-                    model.Add(thisUserModel);
+                    obj.dataSet.Add(thisUserModel);
                 }
 
             }
 
-            return View(model);
+            obj.numOfUsers = obj.dataSet.Count();
+            var output = obj.Cluster();
+            return View(output);
+            //return Content(obj.getUpdateCount().ToString() + obj.getDataSetCount().ToString() + obj.getUserCount().ToString() + obj.getResponseCount().ToString());
         }
 
         [HttpGet]

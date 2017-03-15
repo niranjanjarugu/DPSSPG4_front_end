@@ -7,6 +7,7 @@ namespace DSSPG4_WEB.Models.Entities
     [Table("Surveys")]
     public class Survey
     {
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }

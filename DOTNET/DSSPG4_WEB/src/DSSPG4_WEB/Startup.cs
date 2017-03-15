@@ -66,6 +66,7 @@ namespace DSSPG4_WEB
             services.AddTransient<UserService>();
             services.AddTransient<RoleService>();
             services.AddTransient<SurveyService>();
+            services.AddTransient<KmeansMain>();
             services.AddTransient<Seeder>();
         }
 

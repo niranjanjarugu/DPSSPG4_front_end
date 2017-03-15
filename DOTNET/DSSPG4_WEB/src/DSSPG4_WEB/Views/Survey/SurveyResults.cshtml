@@ -1,47 +1,39 @@
-﻿@model IList<SurveyResultsByUserViewModel>
+﻿@model List<SurveyResultsByUserViewModel>
 
 <h1 align="center">@Model.FirstOrDefault().Survey.SurveyName </h1>
+
 <hr>
 <div class="table-responsive">
     <table class="table table-striped">
- 
+
         <thead>
             <tr>
+                <th>
+                    Cluster
+                </th>
                 <th>
                     FirstName
                 </th>
                 <th>
                     LastName
                 </th>
-                <th>
-                    Question
-                </th>
-                <th>
-                    Response
-                </th>
             </tr>
         </thead>
         <tbody>
-                @foreach (var item in Model)
-                {
-                        @foreach (var resp in item.Responses)
-                        {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.User.FirstName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.User.LastName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => resp.Question)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => resp.ResponseValue)
-                            </td>
-                            </tr>
-                            }
-                        }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cluster)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.LastName)
+                    </td>
+                </tr>
+            }
         <tbody>
     </table>
 </div>

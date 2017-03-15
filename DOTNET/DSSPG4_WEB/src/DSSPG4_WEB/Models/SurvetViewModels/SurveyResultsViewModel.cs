@@ -17,9 +17,21 @@ namespace DSSPG4_WEB.Models.SurvetViewModels
 
     public class SurveyResultsByUserViewModel
     {
+
         public User User { get; set; }
         public Survey Survey { get; set; }
-        public IEnumerable<SurveyViewModelResponseData> Responses { get; set; }
+        public int Cluster { get; set; }
+        public List<SurveyViewModelResponseData> Responses { get; set; }
+
+        public void setCluster(int cluster)
+        {
+            this.Cluster = cluster;
+        }
+
+        public int getCluster()
+        {
+            return this.Cluster;
+        }
     }
 
     public class SurveyViewModelResponseData
