@@ -57,7 +57,7 @@ namespace DSSPG4_WEB.Services.Misc
             {
                 for (int q = 0; q < numOfQs; ++q)
                 {
-                    means[c][q] = random.Next(0, numClusters);
+                    means[c][q] = random.Next(-2, 2);
                 }
             }
             return means;

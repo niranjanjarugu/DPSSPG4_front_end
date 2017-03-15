@@ -2,11 +2,20 @@
 using DSSPG4_WEB.Models.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace DSSPG4_WEB.Models.SurvetViewModels
 {
+    public class SetCluster
+    {
+        public int surveyID { get; set; }
+        [Display(Name = "Number of Clusters")]
+        public int clusterCount { get; set; }
+    }
+
+
     public class SurveyResultsViewModel
     {
         public double ResponsesMarkedImportant { get; set; }

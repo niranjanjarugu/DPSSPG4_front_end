@@ -208,16 +208,23 @@ namespace DSSPG4_WEB.Controllers
 
             return Content(ModelState.Values.ToString());
         }
-        
-       
-        public IActionResult SurveyResults(int id)
+
+        [HttpGet]
+        public IActionResult SurveyResultsGet(int id)
+        {
+            var model = new SetCluster() { surveyID = id, clusterCount = 2 };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult SurveyResults(SetCluster cluster)
         {
             IList<SurveyResultsByUserViewModel> model = new List<SurveyResultsByUserViewModel>();
 
-            var allTakers = _surveyService.GetSurveyTakersIds(id);
-            var this_Survey = _surveyService.GetSurveyById(id);
-            int totalQuestions = _surveyService.GetSurveyQuestionsCount(id);
-            KmeansMain obj = new KmeansMain(4, totalQuestions);
+            var allTakers = _surveyService.GetSurveyTakersIds(cluster.surveyID);
+            var this_Survey = _surveyService.GetSurveyById(cluster.surveyID);
+            int totalQuestions = _surveyService.GetSurveyQuestionsCount(cluster.surveyID);
+            KmeansMain obj = new KmeansMain(cluster.clusterCount, totalQuestions);
 
             foreach (var takerId in allTakers)
             {
@@ -228,7 +235,7 @@ namespace DSSPG4_WEB.Controllers
                 {
                     SurveyResultsByUserViewModel thisUserModel = new SurveyResultsByUserViewModel();
 
-                    var usrResponses = _surveyService.GetSurveyResponsesBySurveyIdAndUserID(id, takerId);
+                    var usrResponses = _surveyService.GetSurveyResponsesBySurveyIdAndUserID(cluster.surveyID, takerId);
                     thisUserModel.User = this_User;
                     thisUserModel.Survey = this_Survey;
                     List<SurveyViewModelResponseData> rspDataList = new List<SurveyViewModelResponseData>();
