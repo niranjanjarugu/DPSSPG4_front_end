@@ -4,93 +4,142 @@
 <h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
 
+<head>
+	<style>
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+		img {
+			display: block;
+			margin: auto;
+			
+			/* border-radius */
+		  -webkit-border-radius: 5px;
+		  -moz-border-radius: 5px;
+		  border-radius: 5px;
+		  /* box-shadow */
+		  -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+		  -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+		  box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+		}
+		td, th {
+			text-align: center;
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+		
+		tr th{
+			text-align: center;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+
+		#desc {text-align: center;}
+	</style>
+</head>
+<center><h2>Meet the Creators</h2>
 
 <p>
-    We are a SaaS company committed to serving out research community.This service was created for the CSC 394 Senior Capstone
-    Winter quarter class for the 2016/17 school year at DePaul Univeristy.
-</p>
-<h2>Meet the Creators</h2>
+    We are a SaaS company committed to serving out research community. This service was created for the CSC 394 Senior Capstone. <br>Winter quarter 2016-17 at DePaul Univeristy.
+</p></center>
+
 <div id="staff">
     <section id="people">
-        <article class="one_one_three">
-            <figure>
-                <img src="placeholder.png" width="290" height="180"
-                     alt="Picture of Emmanuel Rodriguez" />
-                <figcaption>
-                    <h3>Emmanuel Rodriguez</h3>
-                    <p>
-                        Information Systems Major</br>
-                        Lead Software and Cloud Engineer
-                    </p>
-                </figcaption>
-            </figure>
-        </article>
-        <article class="one_two_three">
-            <figure>
-                <img src="placeholder.png" width="290" height="180"
-                     alt="Picture of Chezka Eusebio" />
-                <figcaption>
-                    <h3>Chezka Eusebio</h3>
-                    <p>
-                        Computer Science Major</br>
-                        Software Engineer - Front End
-                    </p>
-                </figcaption>
-            </figure>
-        </article>
-        <article class="one_three_three">
-            <figure>
-                <img src="placeholder.png" width="290" height="180"
-                     alt="Picture of Travis Zillmer " />
-                <figcaption>
-                    <h3>Travis Zillmer</h3>
-                    <p>
-                        Computer Science Major</br>
-                        Technical Communications Specialist
-                    </p>
-                </figcaption>
-            </figure>
-        </article>
-    </section>
-    <section id="people">
-        <article class="two_one_three">
-            <figure>
-                <img src="placeholder.png" width="290" height="180"
-                     alt="Picture of Andres Calzada" />
-                <figcaption>
-                    <h3>Andres Calzada</h3>
-                    <p>
-                        Computer Science Major</br>
-                        Software Engineer - Back End
-                    </p>
-                </figcaption>
-            </figure>
-        </article>
-        <article class="two_two_three">
-            <figure>
-                <img src="placeholder.png" width="290" height="180"
-                     alt="Picture of Samuel Gillies" />
-                <figcaption>
-                    <h3>Samuel Gillies</h3>
-                    <p>
-                        Computer Science Major</br>
-                        Algorithm Design
-                    </p>
-                </figcaption>
-            </figure>
-        </article>
-        <article class="two_three_three">
-            <figure>
-                <img src="placeholder.png" width="290" height="180"
-                     alt="Picture of Serafin Balcazar" />
-                <figcaption>
-                    <h3>Serafin Balcazar</h3>
-                    <p>
-                        Computer Science Major</br>
-                        Technical Writer
-                    </p>
-                </figcaption>
-            </figure>
-        </article>
+        <table>
+		  <tr>
+			<th>Team</th>
+			<th>Tautau</th>
+		  </tr>
+		  <tr>
+			<td>
+				<figure>
+						<img src="placeholder.png" width="290" height="180"
+							 alt="Picture of Emmanuel Rodriguez" />
+						<figcaption>
+							<p id="desc">
+							<b>Emmanuel Rodriguez</b><br>
+							<i>Information Systems Major</br>
+							Lead Software and Cloud Engineer</i>
+							</p>
+						</figcaption>
+					</figure>
+			</td>
+			<td>
+				<figure>
+						<img src="placeholder.png" width="290" height="180"
+							 alt="Picture of Chezka Eusebio" />
+						<figcaption>
+							<p id="desc">
+								<b>Chezka Eusebio</b><br>
+								<i>Computer Science Major</br>
+								Software Engineer - Front End</i>
+							</p>
+						</figcaption>
+					</figure>
+			</td>
+		  </tr>
+		  <tr>
+			<td>
+				<figure>
+						<img src="placeholder.png" width="290" height="180"
+							 alt="Picture of Travis Zillmer " />
+						<figcaption>
+							<p id="desc">
+								<b>Travis Zillmer</b><br>
+								<i>Computer Science Major</br>
+								Technical Communications Specialist</i>
+							</p>
+						</figcaption>
+					</figure>
+			</td>
+			<td>
+				<figure>
+						<img src="placeholder.png" width="290" height="180"
+							 alt="Picture of Andres Calzada" />
+						<figcaption>
+							<p id="desc">
+							<b>Andres Calzada</b><br><i>
+								Computer Science Major</br>
+								Software Engineer - Back End</i>
+							</p>
+						</figcaption>
+					</figure>
+			</td>
+		  </tr>
+		  <tr>
+			<td>
+				<figure>
+						<img src="placeholder.png" width="290" height="180"
+							 alt="Picture of Samuel Gillies" />
+						<figcaption>
+							<p id="desc">
+								<b>Samuel Gillies</b><br>
+								<i>Computer Science Major</br>
+								Algorithm Design</i>
+							</p>
+						</figcaption>
+					</figure>
+			</td>
+			<td>
+				<figure>
+						<img src="placeholder.png" width="290" height="180"
+							 alt="Picture of Serafin Balcazar" />
+						<figcaption>
+							<p id="desc">
+							   <b>Serafin Balcazar</b><br><i>
+								Computer Science Major</br>
+								Technical Writer</i>
+							</p>
+						</figcaption>
+					</figure>
+			</td>
+		  </tr>
+
+		</table>
     </section>
 </div>
