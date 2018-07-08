@@ -1,0 +1,74 @@
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "companyOverview")
+public class CompanyOverview implements Serializable {
+
+ @Id
+ @GeneratedValue(strategy = GenerationType.AUTO)
+ private Long id;
+
+ @Column(name="coCode", unique = true)
+ private Integer coCode;
+ private Integer assets;
+ private Integer liabilities;
+ private Integer premiums;
+ private Integer capitalAndSurplus;
+ private Integer netIncomeCY;
+ private Integer netIncomePY;
+ private Integer netIncomePY1;
+/* @OneToMany(mappedBy = "companyOverview", fetch = FetchType.EAGER)
+ @JsonManagedReference
+ private List<StatementPremium> statementPremium;*/
+----------------------------------------------------------
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "lobDirectPremium")
+public class LobDirectPremium implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String lobName;
+    private String premium;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "stmtPremId")
+    @JsonBackReference
+    private StatementPremium statementPremium;
+    ----------------------------------------------------
+    import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "statementPremium")
+public class StatementPremium implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "stmtPremId")
+    private Long stmtPremId;
+    private String statementType;
+    @OneToMany(mappedBy = "statementPremium", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    @JsonBackReference
+    private List<LobDirectPremium> lobDirectPremiums = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "coCode")
+    private CompanyOverview companyOverview;
